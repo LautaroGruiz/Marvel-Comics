@@ -42,7 +42,6 @@ const Search = () => {
     const timeStamp = new Date().getTime();
     const hash = generateHash(timeStamp);
 
-    
     // const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?apikey=${publicKey}&hash=${hash}&ts=${timeStamp}`;
     const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?apikey=${publicKey}&hash=${hash}&ts=${timeStamp}`;
     fetch(url)
@@ -64,30 +63,35 @@ const Search = () => {
     setCharacterName(event.target.value);
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    setCharacterName("");
+    setCharacterData(null);
+    setComicData(null);
+  };
 
   return (
-    <>
-      <form className="search" onSubmit={handleSubmit}>
-        <input
-          placeholder="Introduce el nombre del personaje"
-          type="text"
-          onChange={handleChange}
-        />
-        <div className="buttons">
-          <button type="submit">Obtener datos de personajes</button>
-          <button type="reset" className="reset" onClick={handleReset}>
-            Reiniciar
-          </button>
-        </div>
-      </form>
-      {characterData && characterData.results && characterData.results[0] && (
-        <Character data={characterData.results} onClick={getComicData} />
-      )}
-      {comicData && comicData.results && comicData.results[0] && (
-        <Comic data={comicData.results} />
-      )}
-    </>
+    <div className="mainLogin">
+          <form className="search" onSubmit={handleSubmit}>
+            <input
+              placeholder="Introduce el nombre del personaje"
+              type="text"
+              onChange={handleChange}
+            />
+            <div className="buttons">
+              <button type="submit">Obtener datos de personajes</button>
+              <button type="reset" className="reset" onClick={handleReset}>
+                Reiniciar
+              </button>
+            </div>
+          </form>
+          {!comicData && characterData && characterData.results[0] && (
+            <Character data={characterData.results} onClick={getComicData} />
+          )}
+
+          {comicData && comicData.results[0] && (
+            <Comic data={comicData.results} onClick={() => {}} />
+          )}
+    </div>
   );
 };
 

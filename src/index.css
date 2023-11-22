@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+body {
+  background-image: url("../src/Image/marvel-banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 320px) and (max-width: 900px) {
+  body {
+    background-image: url("../src/Image/banner-phono.jpg");
+  }
+}
+
