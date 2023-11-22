@@ -6,8 +6,27 @@
     justify-content: center;
     padding-bottom: 2rem ;
     gap: 15px;
+    position: relative; /* o position: static; */
+    max-height: 400px; /* Establece una altura máxima para el desplazamiento */
+    overflow-y: scroll;
 }
-  
+/* Estilo del scrollbar para navegadores webkit */
+.characters::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+}
+.characters::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb (la parte que puedes arrastrar) */
+  border-radius: 5px; /* Bordes redondeados del thumb */
+}
+/* Estilo del scrollbar para Internet Explorer y Microsoft Edge */
+.characters::-ms-scrollbar {
+  width: 10px;
+}
+.characters::-ms-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
 .characterCard {
     border: 2px solid rgb(161, 161, 161);
     background: rgba(255, 255, 255, 0.67);
@@ -58,4 +77,27 @@
       }
     }
 }
-  
+@media screen and (min-width: 320px) and (max-width: 900px) {
+  .characters {
+    max-height: 700px;
+  }
+} 
+@media screen and (min-width: 1000px) and (max-width: 1990px) {
+  .characters {
+    max-height: 390px;
+  }
+} 
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  .characters {
+    max-height: 450px;
+  }
+} 
+@media screen and (min-width: 1600px) {
+  .characters {
+    max-height: 850px;
+  }
+  .characterCard {
+    height: 500px;
+    width: 500px;
+  }
+} 
